@@ -103,14 +103,14 @@ public class StudentList {
 				String Lines = bufferedReader.readLine();
 
 				String students[] = Lines.split(",");
-				boolean done = false;
+				boolean is_Found = false;
 				String new_student = args[0].substring(1);
 
-				for(int idx = 0; idx<students.length && !done; idx++) {
+				for(int idx = 0; idx<students.length && !is_Found; idx++) {
 
 					if(students[idx].equals(new_student)) {
 						System.out.println("We found it!");
-						done=true;
+						is_Found = true;
 					}
 				}
 
