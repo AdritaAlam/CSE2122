@@ -106,7 +106,7 @@ public class StudentList {
 				boolean done = false;
 				String new_student = args[0].substring(1);
 
-				for(int idx = 0; idx<i.length && !done; idx++) {
+				for(int idx = 0; idx<students.length && !done; idx++) {
 
 					if(students[idx].equals(new_student)) {
 						System.out.println("We found it!");
