@@ -8,7 +8,7 @@ import java.util.*;
 // Task#4;
 
 public class StudentList {
-	static public BufferedReader bufferedReader;
+	static BufferedReader bufferedReader;
 	static String Lines;
 	public static void getReader() {
 
