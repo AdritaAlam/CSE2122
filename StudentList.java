@@ -3,7 +3,9 @@ import java.text.*;
 import java.util.*;
 public class StudentList {
 
-	public static BufferedReader fileReader {
+//		bufferfile reader
+
+	public static BufferedReader fileReader() {
 		try {
 				BufferedReader bufferreader = new BufferedReader(
 					new InputStreamReader(
@@ -15,7 +17,8 @@ public class StudentList {
 		}
 
 	}
-	public static BufferedWriter fileWriter {
+//		bufferfile writer
+	public static BufferedWriter fileWriter() {
 		try {
 				BufferedWriter bufferreader = new BufferedWriter(
 					new FileWriter("students.txt", true));
@@ -32,7 +35,7 @@ public class StudentList {
 //		Check arguments
 		if (args.length!=1)
 			System.out.println(Constants.wrngarg);
-		else if(args[0].equals(Constants.List)) {
+		else if(args[0].equals(Constants.list)) {
 			System.out.println(Constants.loadingData);			
 			try {
 				BufferedReader bufferreader = fileReader();
@@ -47,6 +50,7 @@ public class StudentList {
 			catch (Exception e){} 
 			System.out.println(Constants.dataLoaded);
 		}
+//			random name checking
 		else if(args[0].equals(Constants.randomName)) 
 		{
 			System.out.println(Constants.loadingData);			
@@ -62,6 +66,7 @@ public class StudentList {
 			} catch (Exception e){} 
 			System.out.println(Constants.dataLoaded);			
 		}
+//			add new name 
 		else if(args[0].contains(Constants.add) && args[0].indexOf(Constants.add)==0 && args[0].length()>1){
 			System.out.println(Constants.loadingData);			
 			try {
@@ -77,6 +82,7 @@ public class StudentList {
 
 			System.out.println(Constants.dataLoaded);	
 		}
+//			searching a name 
 		else if(args[0].contains(Constants.search) && args[0].indexOf(Constants.search)==0 && args[0].length()>1) 
 		{
 			System.out.println(Constants.loadingData);			
@@ -97,6 +103,7 @@ public class StudentList {
 			} catch (Exception e){} 
 			System.out.println(Constants.dataLoaded);				
 		}
+//			counting the input data 
 		else if(args[0].contains(Constants.count)) 
 		{
 			System.out.println(Constants.loadingData);			
@@ -115,6 +122,7 @@ public class StudentList {
 			} catch (Exception e){} 
 			System.out.println(Constants.dataLoaded);				
 		}
+// if the user enter the wrong arguments
 		else 
 			System.out.println(Constants.enter);
 	}
