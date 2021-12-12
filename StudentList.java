@@ -43,7 +43,8 @@ public class StudentList {
 				String i[] = name.split(Constants.comma);			
 				for(String j : i) 
 				{ 
-					if (!j.startsWith("List"))
+					if (j.startsWith("List"))
+						continue;
 						System.out.println(j); 
 				}
 			} 

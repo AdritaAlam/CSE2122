@@ -8,7 +8,7 @@ public class Constants {
 	 static String randomName="r";
 	 static String count="c";
 	 static String dataLoaded="Data Loaded.";
-	 static String listLast="List last updated on ";
+	 static String listLast=",List last updated on ";
 	 static String loadingData="Loading data ...";
 	 static String found="We found it!";
 	 static String dontEx="The data doesn't exist";
