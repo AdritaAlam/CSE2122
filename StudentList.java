@@ -27,18 +27,17 @@ public class StudentList {
 
 	}
 
-
 	public static void main(String[] args) {
 
 //		Check arguments
 		if (args.length!=1)
-			System.out.println("Wrong argument!");
-		else if(args[0].equals("a")) {
-			System.out.println("Loading data ...");			
+			System.out.println(Constants.wrngarg);
+		else if(args[0].equals(Constants.List)) {
+			System.out.println(Constants.loadingData);			
 			try {
 				BufferedReader bufferreader = fileReader();
 				String name = bufferreader.readLine();
-				String i[] = name.split(",");			
+				String i[] = name.split(Constants.comma);			
 				for(String j : i) 
 				{ 
 					if (!j.startsWith("List"))
@@ -46,65 +45,65 @@ public class StudentList {
 				}
 			} 
 			catch (Exception e){} 
-			System.out.println("Data Loaded.");
+			System.out.println(Constants.dataLoaded);
 		}
-		else if(args[0].equals("r")) 
+		else if(args[0].equals(Constants.randomName)) 
 		{
-			System.out.println("Loading data ...");			
+			System.out.println(Constants.loadingData);			
 			try {
 				BufferedReader bufferreader = fileReader();
 				String name = bufferreader.readLine();
-				String i[] = name.split(",");	
+				String i[] = name.split(Constants.comma);	
 				Random randVal = new Random();
 				int value = randVal.nextInt(i.length);
 				if (i[value].startsWith("List"))
 					value--;
 				System.out.println(i[value]);
 			} catch (Exception e){} 
-			System.out.println("Data Loaded.");			
+			System.out.println(Constants.dataLoaded);			
 		}
-		else if(args[0].contains("+") && args[0].indexOf("+")==0 && args[0].length()>1){
-			System.out.println("Loading data ...");			
+		else if(args[0].contains(Constants.add) && args[0].indexOf(Constants.add)==0 && args[0].length()>1){
+			System.out.println(Constants.loadingData);			
 			try {
 				BufferedWriter bufferreader = fileWriter();
 				String target = args[0].substring(1);
 				Date day = new Date();
-				String dateformate = "dd/mm/yyyy-hh:mm:ss a";
+				String dateformate = Constants.dmy;
 				DateFormat dateFormat = new SimpleDateFormat(dateformate);
 				String fd= dateFormat.format(day);
-				bufferreader.write(","+target+",List last updated on "+fd);
+				bufferreader.write(Constants.comma+target+Constants.listLast+fd);
 				bufferreader.close();
 			} catch (Exception e){}
 
-			System.out.println("Data Loaded.");	
+			System.out.println(Constants.dataLoaded);	
 		}
-		else if(args[0].contains("?") && args[0].indexOf("?")==0 && args[0].length()>1) 
+		else if(args[0].contains(Constants.search) && args[0].indexOf(Constants.search)==0 && args[0].length()>1) 
 		{
-			System.out.println("Loading data ...");			
+			System.out.println(Constants.loadingData);			
 			try {
 				BufferedReader bufferreader = fileReader();
 				String name = bufferreader.readLine();
-				String i[] = name.split(",");	
+				String i[] = name.split(Constants.comma);	
 				boolean done = false;
 				String target = args[0].substring(1);
 				for(int index = 0; index<i.length && !done; index++) {
 					if(i[index].equals(target)) {
-						System.out.println("We found it!");
+						System.out.println(Constants.found);
 						done=true;
 					}
 				}
 				if (done==false)
-					System.out.println("The data doesn't exist");
+					System.out.println(Constants.dontEx);
 			} catch (Exception e){} 
-			System.out.println("Data Loaded.");				
+			System.out.println(Constants.dataLoaded);				
 		}
-		else if(args[0].contains("c")) 
+		else if(args[0].contains(Constants.count)) 
 		{
-			System.out.println("Loading data ...");			
+			System.out.println(Constants.loadingData);			
 			try {
 				BufferedReader bufferreader = fileReader();
 				String name = bufferreader.readLine();
-				String i[] = name.split(",");	
+				String i[] = name.split(Constants.comma);	
 				int count =0;		
 				for(String j : i) 
 				{ 
@@ -112,11 +111,11 @@ public class StudentList {
 						count++;
 				}
 
-				System.out.println(count +" word(s) found ");
+				System.out.println(count +Constants.wf);
 			} catch (Exception e){} 
-			System.out.println("Data Loaded.");				
+			System.out.println(Constants.dataLoaded);				
 		}
 		else 
-			System.out.println("please enter right argument!");
+			System.out.println(Constants.enter);
 	}
 }
