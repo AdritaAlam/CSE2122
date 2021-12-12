@@ -13,8 +13,13 @@ public class StudentList {
 							new FileInputStream("students.txt"))); 
 			String r = s.readLine();
 			String i[] = r.split(",");			
-			for(String j : i) { System.out.println(j); }
-			} catch (Exception e){} 
+			for(String j : i) 
+				{ 
+					if (!j.startsWith("List"))
+					System.out.println(j); 
+				}
+			} 
+			catch (Exception e){} 
 			System.out.println("Data Loaded.");
 		}
 		else if(args[0].equals("r")) 
@@ -25,11 +30,13 @@ public class StudentList {
 					new InputStreamReader(
 							new FileInputStream("students.txt"))); 
 			String r = s.readLine();
-			System.out.println(r);
+			//System.out.println(r);
 			String i[] = r.split(",");	
 			Random x = new Random();
-				int y = x.nextInt();
-					System.out.println(i[y]);
+				int y = x.nextInt(i.length);
+				if (i[y].startsWith("List"))
+					y--;
+				System.out.println(i[y]);
 			} catch (Exception e){} 
 			System.out.println("Data Loaded.");			
 		}
@@ -43,7 +50,7 @@ public class StudentList {
 	        String df = "dd/mm/yyyy-hh:mm:ss a";
 	        DateFormat dateFormat = new SimpleDateFormat(df);
 	        String fd= dateFormat.format(d);
-			s.write(", "+t+"\nList last updated on "+fd);
+			s.write(","+t+",List last updated on "+fd);
 			s.close();
 			} catch (Exception e){}
 							
@@ -66,6 +73,8 @@ public class StudentList {
 						done=true;
 				}
 			}
+			if (done==false)
+				System.out.println("The data doesn't exist");
 			} catch (Exception e){} 
 			System.out.println("Data Loaded.");				
 		}
@@ -76,18 +85,16 @@ public class StudentList {
 			BufferedReader s = new BufferedReader(
 					new InputStreamReader(
 							new FileInputStream("students.txt"))); 
-			String D = s.readLine();
-			char a[] = D.toCharArray();			
-			boolean in_word = false;
-			int count=0;
-			for(char c:a) {
-				if(c ==' ') 
-				{
-					if (!in_word) {	count++; in_word =true;	}
-					else { in_word=false;}			
+			String r = s.readLine();
+			String i[] = r.split(",");	
+			int count =0;		
+			for(String j : i) 
+				{ 
+					if (!j.startsWith("List"))
+						count++;
 				}
-			}
-			System.out.println(count +" word(s) found " + a.length);
+
+			System.out.println(count +" word(s) found ");
 			} catch (Exception e){} 
 			System.out.println("Data Loaded.");				
 		}
