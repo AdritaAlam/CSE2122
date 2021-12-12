@@ -3,7 +3,7 @@ import java.text.*;
 import java.util.*;
 public class StudentList {
 
-	public static BufferedReader fileReader {
+	public static BufferedReader fileReader(){
 		try {
 				BufferedReader bufferreader = new BufferedReader(
 					new InputStreamReader(
@@ -15,7 +15,7 @@ public class StudentList {
 		}
 
 	}
-	public static BufferedWriter fileWriter {
+	public static BufferedWriter fileWriter(){
 		try {
 				BufferedWriter bufferreader = new BufferedWriter(
 					new FileWriter("students.txt", true));
